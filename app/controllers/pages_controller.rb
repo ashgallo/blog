@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  
   #GET /pages
   def index
     @pages = Page.all
@@ -30,8 +29,8 @@ class PagesController < ApplicationController
       render :new
     end
   end
-
-  #PUT/PATCH/pages/:id
+ 
+  # PUT / PATCH /pages/:id
   def update
     @page = Page.find(params[:id])
 
@@ -40,6 +39,12 @@ class PagesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  #DELETE /pages/:id
+  def destroy
+    Page.find(params[:id]).destroy
+    redirect_to pages_path
   end
 
   private
